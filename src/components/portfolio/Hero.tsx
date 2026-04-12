@@ -1,17 +1,17 @@
-import heroBg from "@/assets/hero-bg-new.jpg";
+import heroBg from "@/assets/hero-bg-v2.jpg";
 import { ChevronDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => (
-  <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <section className="relative min-h-screen flex items-end overflow-hidden">
     <div className="absolute inset-0">
       <img src={heroBg} alt="Muhammad Shahzaib" className="w-full h-full object-cover object-top" width={1920} height={1080} />
-      <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/40 to-foreground/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/50 to-transparent" />
     </div>
-    <div className="relative z-10 max-w-6xl mx-auto px-6 w-full mt-32">
+    <div className="relative z-10 max-w-6xl mx-auto px-6 w-full pb-24">
       <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground leading-[0.95] mb-6">
-        Environmental Professional.<br />
-        <span className="text-primary">Consultant. Researcher.</span>
+        Environmental<br />
+        <span className="text-primary">Professional.</span>
       </h1>
       <p className="text-primary-foreground/70 text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
         4+ years driving compliance, emissions monitoring, and sustainability across industrial operations. 
