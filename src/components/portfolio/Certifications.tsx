@@ -4,7 +4,6 @@ const certifications = [
   { name: "ESG Reporting & Regulatory Frameworks", org: "The ESG Institute" },
   { name: "Embodied Carbon, LCA & EPD", org: "Paroc Oy" },
   { name: "Environmental Monitoring & Risk Management", org: "University of Eastern Finland" },
-  { name: "Occupational Safety", org: "Kiwa Suomi" },
   { name: "Carbon Dioxide Removal (CDR)", org: "NASDAQ" },
   { name: "Digital Tools & Data Analytics", org: "University of Eastern Finland" },
   { name: "Project Management & Leadership", org: "Talent Hub Eastern Finland" },

@@ -19,13 +19,13 @@ const Contact = () => (
           <Phone className="text-primary" size={20} />
           <span className="text-sm font-medium">+358 44 928 5931</span>
         </a>
-        <a href="#" className="flex items-center gap-3 bg-primary-foreground/10 hover:bg-primary/20 transition-colors px-6 py-4 rounded-xl">
+        <a href="https://www.linkedin.com/in/muhammad-shahzaib-052ba0291/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-primary-foreground/10 hover:bg-primary/20 transition-colors px-6 py-4 rounded-xl">
           <Linkedin className="text-primary" size={20} />
           <span className="text-sm font-medium">LinkedIn</span>
         </a>
         <div className="flex items-center gap-3 bg-primary-foreground/10 px-6 py-4 rounded-xl">
           <MapPin className="text-primary" size={20} />
-          <span className="text-sm font-medium">Helsinki, Finland</span>
+          <span className="text-sm font-medium">Finland</span>
         </div>
       </div>
     </div>
