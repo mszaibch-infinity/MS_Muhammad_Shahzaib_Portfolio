@@ -1,35 +1,35 @@
-import { Shield, Droplets, Wind, BarChart3, Leaf, FlaskConical } from "lucide-react";
+import { Wind, Shield, BarChart3, FlaskConical, Leaf, Settings } from "lucide-react";
 
 const expertiseItems = [
   {
+    icon: Settings,
+    title: "Environmental Consulting",
+    desc: "Providing expert recommendations on improving process and product parameters for greener outcomes, regulatory alignment, and sustainable industrial practices.",
+  },
+  {
     icon: Wind,
-    title: "Emissions Monitoring & EU ETS",
-    desc: "Planning and executing emissions measurement campaigns, GHG accounting, and ensuring alignment with EU ETS, BAT limits, and ISO standards.",
+    title: "Air Quality & Emission Management",
+    desc: "Planning and executing emissions measurement campaigns, GHG accounting, and ensuring compliance with EU ETS, BAT limits, and ISO standards.",
   },
   {
     icon: Shield,
-    title: "Environmental Compliance & EHS",
-    desc: "EIA, EMS (ISO 14001), QMS (ISO 9001), environmental audits, regulatory permitting, and third-party audit support.",
+    title: "Regulatory Compliance",
+    desc: "EIA, EMS (ISO 14001), QMS (ISO 9001), environmental audits, permitting, and third-party audit support to meet compliance limits and industry benchmarks.",
   },
   {
     icon: BarChart3,
-    title: "Data Analysis & Reporting",
-    desc: "Environmental data analysis using Python, MATLAB, ArcGIS, and OneClick LCA. Technical reporting, dashboards, and regulatory submissions.",
-  },
-  {
-    icon: Droplets,
-    title: "Water & Waste Management",
-    desc: "Wastewater analysis, waste management monitoring, circular economy initiatives, and construction environmental compliance.",
-  },
-  {
-    icon: Leaf,
-    title: "Sustainability & LCA",
-    desc: "Life Cycle Assessment, Embodied Carbon analysis, EPDs, ESG reporting, and carbon footprint reduction strategies.",
+    title: "Data Analysis & Dashboards",
+    desc: "Connecting process signals with environmental data to build interactive dashboards — filtering by date, visualizing trends, and turning raw data into actionable insights.",
   },
   {
     icon: FlaskConical,
-    title: "Research & Instrumentation",
-    desc: "Aerosol and emissions research, instrument calibration, laboratory-based analysis, and scientific publications.",
+    title: "Research & Development",
+    desc: "Aerosol and emissions research, instrument calibration, laboratory-based analysis, experimental design, and peer-reviewed scientific publications.",
+  },
+  {
+    icon: Leaf,
+    title: "Sustainability Reporting",
+    desc: "Life Cycle Assessment, Embodied Carbon analysis, EPDs, ESG reporting, carbon footprint reduction strategies, and circular economy initiatives.",
   },
 ];
 
