@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const drives = [
   {
     title: "Environmental Consulting",
@@ -25,24 +27,45 @@ const drives = [
   },
 ];
 
-const Drives = () => (
-  <section className="bg-background py-24">
-    <div className="max-w-[1100px] mx-auto px-6">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-12">
-        6 Areas That Drive Everything I Do:
-      </h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {drives.map((d) => (
-          <div key={d.title} className="group">
-            <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+const Drives = () => {
+  const [active, setActive] = useState(0);
+
+  return (
+    <section className="bg-background py-24">
+      <div className="max-w-[1100px] mx-auto px-6">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-12">
+          6 Areas That Drive Everything I Do:
+        </h2>
+
+        {/* Tabs - like Teemu's style */}
+        <div className="flex flex-wrap gap-2 mb-8">
+          {drives.map((d, i) => (
+            <button
+              key={d.title}
+              onClick={() => setActive(i)}
+              className={`px-5 py-3 rounded-lg text-sm font-medium transition-all ${
+                active === i
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+              }`}
+            >
               {d.title}
-            </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">{d.desc}</p>
-          </div>
-        ))}
+            </button>
+          ))}
+        </div>
+
+        {/* Active content */}
+        <div className="bg-card rounded-xl p-8 md:p-12 shadow-sm border border-border">
+          <h3 className="text-2xl font-bold text-foreground mb-4">
+            {drives[active].title}
+          </h3>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            {drives[active].desc}
+          </p>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Drives;
