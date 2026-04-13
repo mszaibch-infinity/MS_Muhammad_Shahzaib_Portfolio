@@ -2,7 +2,7 @@ import heroBg from "@/assets/hero-bg-v2.jpg";
 import { Download } from "lucide-react";
 
 const Hero = () => (
-  <section className="relative min-h-screen flex items-center overflow-hidden">
+  <section className="relative min-h-screen flex items-end overflow-hidden">
     {/* B&W background image */}
     <div className="absolute inset-0">
       <img
@@ -12,11 +12,11 @@ const Hero = () => (
         width={1920}
         height={1080}
       />
-      <div className="absolute inset-0 bg-foreground/60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
     </div>
 
-    {/* Content — centered like Teemu */}
-    <div className="relative z-10 max-w-[1100px] mx-auto px-6 w-full pt-32">
+    {/* Content — bottom-aligned like Teemu */}
+    <div className="relative z-10 max-w-[1100px] mx-auto px-6 w-full pb-24">
       <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-black text-primary-foreground leading-[1.05] mb-8">
         Environmental Professional.
       </h1>
