@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Plus, Minus } from "lucide-react";
+import buildingImg from "@/assets/building-greener.jpg";
 
 const drives = [
   {
@@ -28,40 +30,49 @@ const drives = [
 ];
 
 const Drives = () => {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState<number | null>(0);
 
   return (
     <section className="bg-background py-24">
       <div className="max-w-[1100px] mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-12">
-          6 Areas That Drive Everything I Do:
+          Key Areas I Work On:
         </h2>
 
-        {/* Tabs - like Teemu's style */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {drives.map((d, i) => (
-            <button
-              key={d.title}
-              onClick={() => setActive(i)}
-              className={`px-5 py-3 rounded-lg text-sm font-medium transition-all ${
-                active === i
-                  ? "bg-primary text-primary-foreground shadow-md"
-                  : "bg-secondary text-muted-foreground hover:bg-secondary/80"
-              }`}
-            >
-              {d.title}
-            </button>
-          ))}
-        </div>
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          {/* Left: Vertical accordion tabs */}
+          <div className="space-y-3">
+            {drives.map((d, i) => (
+              <div key={d.title}>
+                <button
+                  onClick={() => setActive(active === i ? null : i)}
+                  className={`w-full flex items-center gap-3 px-5 py-4 rounded-lg text-left font-medium transition-all ${
+                    active === i
+                      ? "bg-primary text-primary-foreground shadow-md"
+                      : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  {active === i ? <Minus size={18} className="shrink-0" /> : <Plus size={18} className="shrink-0" />}
+                  <span className="text-sm">{d.title}</span>
+                </button>
+                {active === i && (
+                  <div className="px-5 py-4 text-muted-foreground text-sm leading-relaxed border-l-2 border-primary ml-4 mt-1">
+                    {d.desc}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
 
-        {/* Active content */}
-        <div className="bg-card rounded-xl p-8 md:p-12 shadow-sm border border-border">
-          <h3 className="text-2xl font-bold text-foreground mb-4">
-            {drives[active].title}
-          </h3>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            {drives[active].desc}
-          </p>
+          {/* Right: Background image */}
+          <div className="hidden md:block relative">
+            <img
+              src={buildingImg}
+              alt="Environmental work"
+              className="w-full h-full min-h-[500px] object-cover rounded-xl shadow-lg"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </section>

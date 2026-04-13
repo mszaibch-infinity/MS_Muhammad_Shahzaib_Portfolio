@@ -22,10 +22,10 @@ const Index = () => (
     <Drives />
     <BuildingGreener />
     <ProjectOutcomes />
-    <Certifications />
     <Testimonial />
     <Companies />
     <About />
+    <Certifications />
     <LetsTalk />
     <Contact />
     <Footer />

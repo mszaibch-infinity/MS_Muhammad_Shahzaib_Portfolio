@@ -1,40 +1,42 @@
 import buildingImg from "@/assets/building-greener.jpg";
 
 const BuildingGreener = () => (
-  <section className="relative py-24">
-    <div className="max-w-[1100px] mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-      <div>
+  <section className="relative py-0">
+    {/* Curved top edge */}
+    <div className="absolute top-0 left-0 right-0 h-16 bg-background" style={{ borderRadius: '0 0 50% 50%' }} />
+
+    {/* Background image section */}
+    <div className="relative">
+      <div className="absolute inset-0">
         <img
           src={buildingImg}
-          alt="Environmental monitoring at industrial plant"
-          className="rounded-xl shadow-lg w-full"
+          alt="Environmental monitoring"
+          className="w-full h-full object-cover"
           loading="lazy"
-          width={1920}
-          height={1080}
         />
+        <div className="absolute inset-0 bg-foreground/60" />
       </div>
-      <div>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6">
-          Building Greener Business?
+
+      <div className="relative z-10 max-w-[800px] mx-auto px-6 py-24 text-center">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-primary-foreground mb-6">
+          Building a Greener, More Sustainable Business?
         </h2>
-        <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+        <p className="text-primary-foreground/80 text-lg leading-relaxed mb-8">
           I help industries turn environmental challenges into actionable improvements. From emissions
           compliance to sustainability reporting, I provide hands-on support to help your business meet
           regulatory targets while improving processes and products.
         </p>
-        <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-          Whether you're navigating EU ETS requirements, need an environmental impact assessment, or
-          want data-driven insights into your operations —{" "}
-          <strong className="text-foreground font-bold">let's find the path forward together.</strong>
-        </p>
         <a
           href="#contact"
-          className="inline-flex items-center justify-center border-2 border-foreground text-foreground font-bold text-sm uppercase tracking-wider px-8 py-4 rounded hover:bg-foreground hover:text-background transition-colors"
+          className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold text-sm uppercase tracking-wider px-10 py-4 rounded-full hover:bg-primary/90 transition-colors"
         >
           Get In Touch
         </a>
       </div>
     </div>
+
+    {/* Curved bottom edge */}
+    <div className="absolute bottom-0 left-0 right-0 h-16 bg-secondary" style={{ borderRadius: '50% 50% 0 0' }} />
   </section>
 );
 

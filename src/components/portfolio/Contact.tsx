@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, Send } from "lucide-react";
+import { Send, Mail, Phone, Linkedin, Globe } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
@@ -12,27 +12,9 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 bg-background">
       <div className="max-w-[1100px] mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-6">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-12">
           Get in touch
         </h2>
-        <p className="text-muted-foreground text-lg mb-4">
-          Drop me a line, and I will get back to you as soon as I can!
-        </p>
-        <p className="text-muted-foreground mb-2">
-          Also, please remember to leave your email and phone number.
-        </p>
-        <p className="text-muted-foreground mb-8">
-          You can also send me an email. My email can be found below.
-        </p>
-
-        <div className="flex flex-wrap gap-4 mb-12 text-sm text-muted-foreground">
-          <a href="mailto:mszaibch@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
-            <Mail size={16} /> mszaibch@gmail.com
-          </a>
-          <a href="tel:+358449285931" className="flex items-center gap-2 hover:text-primary transition-colors">
-            <Phone size={16} /> +358 44 928 5931
-          </a>
-        </div>
 
         <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl">
           <input
@@ -76,6 +58,40 @@ const Contact = () => {
             Send
           </button>
         </form>
+
+        {/* Contact icons */}
+        <div className="flex items-center gap-6 mt-12">
+          <a
+            href="mailto:mszaibch@gmail.com"
+            className="w-12 h-12 rounded-full bg-[#EA4335] flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+            aria-label="Email"
+          >
+            <Mail size={20} />
+          </a>
+          <a
+            href="tel:+358449285931"
+            className="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+            aria-label="Phone"
+          >
+            <Phone size={20} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/muhammad-shahzaib-052ba0291/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-12 h-12 rounded-full bg-[#0A66C2] flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+            aria-label="LinkedIn"
+          >
+            <Linkedin size={20} />
+          </a>
+          <a
+            href="#"
+            className="w-12 h-12 rounded-full bg-foreground flex items-center justify-center text-background hover:opacity-80 transition-opacity"
+            aria-label="Website"
+          >
+            <Globe size={20} />
+          </a>
+        </div>
       </div>
     </section>
   );
