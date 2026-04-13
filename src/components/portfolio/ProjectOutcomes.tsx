@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BarChart3, FileText, Settings, TrendingUp } from "lucide-react";
 
 const outcomes = [
@@ -23,29 +24,39 @@ const outcomes = [
   },
 ];
 
-const ProjectOutcomes = () => (
-  <section className="bg-secondary py-24">
-    <div className="max-w-[1100px] mx-auto px-6">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">
-        Discover Some of My Project Outcomes:
-      </h2>
-      <p className="text-muted-foreground text-lg mb-12 max-w-2xl">
-        Here's a look at the kind of impact I deliver across environmental consulting engagements.
-      </p>
-      <div className="grid md:grid-cols-2 gap-8">
-        {outcomes.map((o) => (
-          <div
-            key={o.title}
-            className="bg-card rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
-          >
-            <o.icon className="text-primary mb-4" size={32} />
-            <h3 className="text-xl font-bold text-foreground mb-3">{o.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">{o.desc}</p>
-          </div>
-        ))}
+const ProjectOutcomes = () => {
+  const [active, setActive] = useState<number | null>(null);
+
+  return (
+    <section className="bg-secondary py-24">
+      <div className="max-w-[1100px] mx-auto px-6">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">
+          Expertise in Action — Previous Project Outcomes
+        </h2>
+        <p className="text-muted-foreground text-lg mb-12 max-w-2xl">
+          See where I've applied my skills — click on each area to explore real project outcomes and deliverables.
+        </p>
+        <div className="grid md:grid-cols-2 gap-8">
+          {outcomes.map((o, i) => (
+            <div
+              key={o.title}
+              onClick={() => setActive(active === i ? null : i)}
+              className="bg-card rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+            >
+              <o.icon className="text-primary mb-4" size={32} />
+              <h3 className="text-xl font-bold text-foreground mb-3">{o.title}</h3>
+              {active === i && (
+                <p className="text-muted-foreground text-sm leading-relaxed animate-in fade-in duration-300">{o.desc}</p>
+              )}
+              {active !== i && (
+                <p className="text-primary text-sm font-medium">Click to explore →</p>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default ProjectOutcomes;
