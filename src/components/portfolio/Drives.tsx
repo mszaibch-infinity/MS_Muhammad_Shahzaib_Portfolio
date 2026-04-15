@@ -33,7 +33,7 @@ const Drives = () => {
   const [active, setActive] = useState<number | null>(0);
 
   return (
-    <section className="bg-background py-24">
+    <section id="drives" className="bg-background py-24">
       <div className="max-w-[1100px] mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-12">
           Key Areas I Work On:
