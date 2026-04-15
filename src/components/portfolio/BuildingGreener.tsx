@@ -36,7 +36,7 @@ const BuildingGreener = () => (
     </div>
 
     {/* Curved bottom edge */}
-    <div className="absolute bottom-0 left-0 right-0 h-16 bg-secondary" style={{ borderRadius: '50% 50% 0 0' }} />
+    <div className="absolute bottom-0 left-0 right-0 h-16 bg-secondary" />
   </section>
 );
 

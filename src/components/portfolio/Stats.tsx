@@ -13,11 +13,10 @@ const Stats = () => (
         Interesting facts about me:
       </h2>
       <p className="text-primary-foreground/80 text-lg mb-12 max-w-2xl">
-        Finland-based Environmental Professional with a global outlook — specializing in{" "}
+        Finland-based Environmental Professional with a global outlook — currently focused on{" "}
         <strong className="text-primary-foreground font-bold">
-          EU and US markets
-        </strong>{" "}
-        through hands-on experience across Pakistan, Finland, and international projects.
+          EU and US markets.
+        </strong>
       </p>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
         {stats.map((s) => (

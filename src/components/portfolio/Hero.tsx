@@ -31,6 +31,12 @@ const Hero = () => (
         >
           Learn More
         </a>
+        <a
+          href="#contact"
+          className="inline-flex items-center justify-center border-2 border-primary-foreground text-primary-foreground font-bold text-sm uppercase tracking-wider px-8 py-4 rounded hover:bg-primary-foreground/10 transition-colors"
+        >
+          Get In Touch
+        </a>
       </div>
     </div>
   </section>
