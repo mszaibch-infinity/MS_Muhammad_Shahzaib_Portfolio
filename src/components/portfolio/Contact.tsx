@@ -95,7 +95,6 @@ const Contact = () => {
                 <Globe size={20} />
               </a>
             </div>
-          </div>
         </div>
       </div>
     </section>
