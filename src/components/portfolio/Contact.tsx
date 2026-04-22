@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Send, Mail, Phone, Linkedin, Globe } from "lucide-react";
-import portrait from "@/assets/shahzaib-pointing.jpg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
@@ -12,10 +11,8 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 bg-background">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left: Form */}
-          <div>
+      <div className="max-w-[760px] mx-auto px-6">
+        <div>
             <p className="font-['Playfair_Display',serif] italic text-2xl md:text-3xl text-muted-foreground mb-2">
               Let's talk!
             </p>
@@ -97,23 +94,6 @@ const Contact = () => {
               >
                 <Globe size={20} />
               </a>
-            </div>
-          </div>
-
-          {/* Right: Portrait on white */}
-          <div className="relative flex items-center justify-center">
-            <div className="relative w-full max-w-md">
-              {/* Decorative red blob behind */}
-              <div className="absolute -top-6 -right-6 w-40 h-40 rounded-full bg-primary/10 -z-0" />
-              <div className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-primary/5 -z-0" />
-              <img
-                src={portrait}
-                alt="Muhammad Shahzaib"
-                className="relative z-10 w-full h-auto object-contain"
-                loading="lazy"
-                width={1024}
-                height={1280}
-              />
             </div>
           </div>
         </div>

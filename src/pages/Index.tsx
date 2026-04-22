@@ -4,8 +4,6 @@ import Stats from "@/components/portfolio/Stats";
 import Drives from "@/components/portfolio/Drives";
 import BuildingGreener from "@/components/portfolio/BuildingGreener";
 import ProjectOutcomes from "@/components/portfolio/ProjectOutcomes";
-import Certifications from "@/components/portfolio/Certifications";
-import Testimonial from "@/components/portfolio/Testimonial";
 import Contact from "@/components/portfolio/Contact";
 import Footer from "@/components/portfolio/Footer";
 
