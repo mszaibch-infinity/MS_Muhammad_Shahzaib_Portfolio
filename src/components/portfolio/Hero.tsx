@@ -12,7 +12,8 @@ const Hero = () => {
         <img
           src={heroBg}
           alt="Muhammad Shahzaib"
-          className="w-full h-full object-cover object-right"
+          className="w-full h-full object-cover"
+          style={{ objectPosition: "85% center" }}
           width={1920}
           height={1080}
         />
@@ -21,21 +22,17 @@ const Hero = () => {
       </div>
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 w-full pt-24 pb-16 md:pt-0 md:pb-0">
-        <div className="max-w-2xl">
+        <div className="max-w-xl">
           <p className="text-primary-foreground/80 text-base md:text-lg font-medium mb-3 tracking-wide">
             Hi, I Am
           </p>
-          <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-black text-primary-foreground leading-[1.05] mb-6">
-            Muhammad <span className="text-primary">Shahzaib</span>.
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary-foreground leading-[1.05] mb-6">
+            Muhammad <span className="text-primary">Shahzaib</span>
           </h1>
-          <p className="text-primary-foreground/90 text-lg md:text-xl italic max-w-2xl mb-10 leading-relaxed font-light">
-            Environmental Specialist and Data Analyst turning complex data challenges into{" "}
-            <strong className="not-italic font-semibold text-primary-foreground">
-              actionable outcomes
-            </strong>
-            , delivering technical solutions that enhance processes, ensure compliance, and drive sustainable growth.
+          <p className="text-primary-foreground/90 text-lg md:text-xl italic max-w-xl mb-16 leading-relaxed font-light">
+            Environmental Specialist and Data Analyst turning complex data challenges into actionable outcomes, delivering technical solutions that enhance processes, ensure compliance, and drive sustainable growth.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mt-4">
             <a
               href="#about"
               className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold text-sm uppercase tracking-wider px-8 py-4 rounded hover:bg-primary/90 transition-colors"

@@ -4,7 +4,7 @@ const stats = [
   { value: "27", label: "Age" },
   { value: "+4", label: "Industrial Experience" },
   { value: "+2", label: "Years of Research Experience" },
-  { value: "10+", label: "Projects" },
+  { value: "+10", label: "Projects" },
   { value: "2", label: "Countries Worked" },
 ];
 
