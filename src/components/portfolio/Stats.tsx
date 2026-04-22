@@ -1,30 +1,64 @@
+import { GraduationCap } from "lucide-react";
+
 const stats = [
   { value: "27", label: "Age" },
-  { value: "+4", label: "Years Experience" },
-  { value: "10+", label: "Emissions Campaigns" },
-  { value: "EU ETS", label: "Compliance Expertise" },
-  { value: "3", label: "Countries Worked In" },
+  { value: "+4", label: "Industrial Experience" },
+  { value: "+2", label: "Years of Research Experience" },
+  { value: "10+", label: "Projects" },
+  { value: "2", label: "Countries Worked" },
 ];
 
 const Stats = () => (
-  <section className="bg-primary py-20">
+  <section className="relative bg-background pt-16 pb-24">
     <div className="max-w-[1100px] mx-auto px-6">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-primary-foreground mb-4">
-        Interesting facts about me:
-      </h2>
-      <p className="text-primary-foreground/80 text-lg mb-12 max-w-2xl">
-        Finland-based Environmental Professional with a global outlook — currently focused on{" "}
-        <strong className="text-primary-foreground font-bold">
-          EU and US markets.
-        </strong>
-      </p>
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+      {/* Education hanging card overlaps the Hero above */}
+      <div className="grid md:grid-cols-12 gap-8 items-start">
+        <div className="md:col-span-7 md:order-1 order-2">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4 mt-6 md:mt-12">
+            Interesting facts about me:
+          </h2>
+          <p className="text-foreground/80 text-lg mb-12 max-w-2xl">
+            Finland-based with a global outlook — currently focused on{" "}
+            <strong className="text-primary font-bold">EU and US markets.</strong>
+          </p>
+        </div>
+
+        <div className="md:col-span-5 md:order-2 order-1 md:-mt-40 -mt-32 relative z-20">
+          <div className="bg-card rounded-xl shadow-2xl border border-border p-8 md:p-10">
+            <h3 className="font-['Playfair_Display',serif] italic text-3xl md:text-4xl text-foreground mb-1">
+              Education
+            </h3>
+            <p className="text-primary font-bold text-xs uppercase tracking-[0.2em] mb-6">
+              Two Degrees
+            </p>
+            <div className="space-y-5">
+              <div className="flex items-start gap-3">
+                <GraduationCap className="text-primary shrink-0 mt-1" size={20} />
+                <div>
+                  <p className="font-bold text-foreground">M.Sc. Environmental Technology</p>
+                  <p className="text-muted-foreground text-sm">University of Eastern Finland (2023–2025)</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <GraduationCap className="text-primary shrink-0 mt-1" size={20} />
+                <div>
+                  <p className="font-bold text-foreground">B.Sc. Environmental Science</p>
+                  <p className="text-muted-foreground text-sm">University of the Punjab (2016–2020)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Stats grid – red text on white */}
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mt-8">
         {stats.map((s) => (
           <div key={s.label} className="text-center">
-            <p className="text-5xl md:text-6xl font-black text-primary-foreground mb-2">
+            <p className="text-5xl md:text-6xl font-black text-primary mb-2 leading-none">
               {s.value}
             </p>
-            <p className="text-primary-foreground/70 text-sm uppercase tracking-wider font-medium">
+            <p className="text-muted-foreground text-xs md:text-sm uppercase tracking-wider font-medium">
               {s.label}
             </p>
           </div>
