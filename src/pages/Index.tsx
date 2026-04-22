@@ -20,8 +20,6 @@ const Index = () => (
     <Drives />
     <BuildingGreener />
     <ProjectOutcomes />
-    <Testimonial />
-    <Certifications />
     <Contact />
     <Footer />
   </div>
