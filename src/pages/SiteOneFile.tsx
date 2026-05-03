@@ -128,7 +128,7 @@ const companies = [
 // Sections
 // ---------------------------------------------------------------------------
 
-function Navbar() {
+export function Navbar() {
   const [open, setOpen] = useState(false);
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-foreground/80 backdrop-blur-md">
@@ -737,7 +737,7 @@ function Contact() {
   );
 }
 
-function Footer() {
+export function Footer() {
   return (
     <footer className="bg-foreground border-t border-primary-foreground/10 py-6">
       <div className="max-w-[1100px] mx-auto px-6 text-center">

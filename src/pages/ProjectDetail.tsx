@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, BarChart3, FileText, Settings, Wind } from "lucide-react";
-import Navbar from "@/components/portfolio/Navbar";
-import Footer from "@/components/portfolio/Footer";
+import { Navbar, Footer } from "@/pages/SiteOneFile";
 
 const projects: Record<
   string,
