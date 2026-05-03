@@ -11,7 +11,6 @@ const stats = [
 const Stats = () => (
   <section className="relative bg-background pt-10 sm:pt-16 pb-16 sm:pb-24">
     <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
-      {/* Education card sits below headline on mobile; overlaps hero on md+ */}
       <div className="grid md:grid-cols-12 gap-6 md:gap-8 items-start">
         <div className="md:col-span-7 md:order-1 order-2">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary mb-3 sm:mb-4 mt-4 sm:mt-6 md:mt-12">
@@ -23,7 +22,7 @@ const Stats = () => (
           </p>
         </div>
 
-        <div className="md:col-span-5 md:order-2 order-1 md:-mt-40 -mt-12 sm:-mt-20 relative z-20">
+        <div className="md:col-span-5 md:order-2 order-1 mt-0 md:-mt-40 relative z-10 md:z-20">
           <div className="bg-card rounded-xl shadow-2xl border border-border p-6 sm:p-8 md:p-10">
             <h3 className="font-['Playfair_Display',serif] italic text-3xl md:text-4xl text-foreground mb-1">
               Education

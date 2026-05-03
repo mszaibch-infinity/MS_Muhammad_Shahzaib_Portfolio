@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Website operations checklist</title>
+  <style>
+    body { font-family: Calibri, "Segoe UI", sans-serif; line-height: 1.4; max-width: 720px; margin: 1in auto; color: #222; }
+    h1 { font-size: 22pt; }
+    h2 { font-size: 16pt; margin-top: 1.2em; border-bottom: 1px solid #ccc; padding-bottom: 4px; }
+    h3 { font-size: 13pt; margin-top: 1em; }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 11pt; }
+    th, td { border: 1px solid #999; padding: 8px; text-align: left; vertical-align: top; }
+    th { background: #f0f0f0; }
+    code, pre { font-family: Consolas, monospace; font-size: 10pt; background: #f5f5f5; padding: 2px 4px; }
+    pre { padding: 10px; white-space: pre-wrap; }
+    .note { background: #fff8e6; border-left: 4px solid #e6a800; padding: 8px 12px; margin: 12px 0; }
+    ul.checklist { list-style-type: none; padding-left: 0; }
+    ul.checklist li { margin: 6px 0; padding-left: 1.5em; text-indent: -1.5em; }
+    ul.checklist li:before { content: "☐ "; }
+  </style>
+</head>
+<body>
+
+<h1>Website operations checklist</h1>
+<p><strong>Project:</strong> digital-self-gem-448ac62d (Vite + React + TypeScript)</p>
+<p class="note"><strong>To get a Word file (.docx):</strong> Open this HTML file in Microsoft Word → <em>File → Save As</em> → choose <strong>Word Document (*.docx)</strong>.</p>
+
+<h2>Part A — After cloning from GitHub: run the site locally</h2>
+
+<h3>Prerequisites</h3>
+<ul class="checklist">
+  <li>Install <strong>Node.js</strong> (LTS) from https://nodejs.org — includes npm.</li>
+</ul>
+
+<h3>Steps</h3>
+<ul class="checklist">
+  <li>Open Terminal (PowerShell or Command Prompt).</li>
+  <li>Go to your project folder (adjust path):</li>
+</ul>
+<pre>cd "C:\Users\YOUR_USER\...\digital-self-gem-448ac62d"</pre>
+<ul class="checklist">
+  <li>Install dependencies (first time or after package.json changes): <code>npm install</code></li>
+  <li>Start dev server: <code>npm run dev</code></li>
+  <li>Read the terminal line “Local:” — often <code>http://localhost:8080/</code> (another port if busy).</li>
+  <li>Open that URL in your browser.</li>
+</ul>
+
+<h3>Useful commands</h3>
+<table>
+  <tr><th>Goal</th><th>Command</th></tr>
+  <tr><td>Production build (before deploy)</td><td><code>npm run build</code></td></tr>
+  <tr><td>Preview built site locally</td><td><code>npm run preview</code></td></tr>
+  <tr><td>Run tests</td><td><code>npm run test</code></td></tr>
+</table>
+
+<h2>Part B — Remove Lovable / developer branding</h2>
+
+<table>
+  <tr><th>What</th><th>Where</th><th>Action</th></tr>
+  <tr><td>README boilerplate</td><td><code>README.md</code></td><td>Replace Lovable placeholder text with your own summary.</td></tr>
+  <tr><td>Lovable IDE memory (not shipped to users)</td><td>folder <code>.lovable\</code></td><td>Optional: delete entire folder if you do not use Lovable Cloud.</td></tr>
+  <tr><td>Social preview image</td><td><code>public\og-image.jpg</code></td><td>Replace file or update <code>index.html</code> meta to another image.</td></tr>
+  <tr><td>Live site URL for previews</td><td><code>package.json</code> → <strong>homepage</strong></td><td>Set to real deployed URL. Optional: <code>.env.production</code> with <code>VITE_SITE_URL=...</code></td></tr>
+  <tr><td>Title &amp; description</td><td><code>index.html</code></td><td>Edit title, description, og:* and twitter:* tags.</td></tr>
+  <tr><td>npm package</td><td><code>package.json</code></td><td><code>lovable-tagger</code> was removed — do not re-add unless you want Lovable tooling.</td></tr>
+</table>
+
+<p><strong>Search repo:</strong> Ctrl+Shift+F → search <code>lovable</code> and fix any remaining mentions.</p>
+
+<h2>Part C — Projects: tiles, detail pages, blogs, embeds</h2>
+
+<h3>Navigation map</h3>
+<table>
+  <tr><th>What you want</th><th>File to edit</th></tr>
+  <tr><td>Tiles on home (“Recent Projects”) — title, slug, blurb</td><td><code>src\components\portfolio\ProjectOutcomes.tsx</code></td></tr>
+  <tr><td>Full project page — headings, paragraphs, future embeds</td><td><code>src\pages\ProjectDetail.tsx</code></td></tr>
+  <tr><td>Routes (already wired)</td><td><code>src\App.tsx</code> — route <code>/projects/:slug</code></td></tr>
+</table>
+
+<p class="note"><strong>Important:</strong> The <code>slug</code> string in <code>ProjectOutcomes.tsx</code> must exactly match a key in the <code>projects</code> object in <code>ProjectDetail.tsx</code>. If they differ, you get “Project not found”.</p>
+
+<h3>Add a new project (checklist)</h3>
+<ul class="checklist">
+  <li>Add a tile in <code>ProjectOutcomes.tsx</code> with a unique <code>slug</code> (lowercase, hyphens).</li>
+  <li>Add the same slug as a key in <code>ProjectDetail.tsx</code> inside <code>projects</code>.</li>
+  <li>Fill <code>title</code>, <code>tagline</code>, and <code>sections[]</code>.</li>
+</ul>
+
+<h3>New tab links &amp; embeds</h3>
+<p>Today, section bodies are plain text strings. For “Open report in new tab”, add JSX links with <code>target=&quot;_blank&quot;</code> and <code>rel=&quot;noopener noreferrer&quot;</code>. For dashboards or YouTube, add an <code>&lt;iframe&gt;</code> (only if the external site allows embedding).</p>
+<p>A developer can extend the section type to include optional <code>embedUrl</code> or <code>externalLinks</code> arrays next to your paragraphs.</p>
+
+<h2>Part D — Deploy reminder</h2>
+<ul class="checklist">
+  <li>Run <code>npm run build</code> → deploy contents of <code>dist\</code>.</li>
+  <li>Keep <code>homepage</code> / <code>VITE_SITE_URL</code> aligned with the real URL for correct WhatsApp/LinkedIn previews.</li>
+</ul>
+
+<p style="margin-top: 2em; font-size: 10pt; color: #666;">Companion Markdown: <code>docs\Website-Operations-Checklist.md</code></p>
+
+</body>
+</html>

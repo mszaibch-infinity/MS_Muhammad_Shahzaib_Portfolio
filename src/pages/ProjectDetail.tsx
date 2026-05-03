@@ -1,17 +1,24 @@
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, BarChart3, FileText, Settings, Wind } from "lucide-react";
+import { ArrowLeft, BarChart3, FileText, FlaskConical, Settings, Wind } from "lucide-react";
 import Navbar from "@/components/portfolio/Navbar";
 import Footer from "@/components/portfolio/Footer";
 
-const projects: Record<
-  string,
-  {
-    icon: typeof BarChart3;
-    title: string;
-    tagline: string;
-    sections: { heading: string; body: string }[];
-  }
-> = {
+type ProjectSection = {
+  heading: string;
+  body: string;
+  /** #EMBED optional: Looker Studio / YouTube embed URL — renders iframe below body */
+  embedUrl?: string;
+};
+
+type ProjectEntry = {
+  icon: typeof BarChart3;
+  title: string;
+  tagline: string;
+  sections: ProjectSection[];
+};
+
+/* #PROJECT_REGISTRY — every slug here must match `slug` in ProjectOutcomes.tsx */
+const projects: Record<string, ProjectEntry> = {
   "data-analysis": {
     icon: BarChart3,
     title: "Data Analysis & Visualizations",
@@ -23,6 +30,33 @@ const projects: Record<
       { heading: "Outcomes & Impact", body: "Coming soon — measurable results and recommendations." },
     ],
   },
+
+  /* #ESG_PROJECT — demo with embedded Looker Studio (Google) dashboard */
+  "esg-sustainability-reporting": {
+    icon: FileText,
+    title: "ESG / Sustainability Data Reporting",
+    tagline: "Demo: interactive reporting view — embed your own Looker Studio or similar link the same way.",
+    sections: [
+      {
+        heading: "Overview",
+        body:
+          "This page shows how you can combine narrative copy with a live embedded dashboard. Replace this text with your project summary, scope, and stakeholders. Below is a sample Looker Studio embed for demonstration only.",
+      },
+      {
+        heading: "Live dashboard (demo embed)",
+        body:
+          "If the frame is blank, the host may block embedding from localhost — try again on your deployed site. You can also add a link that opens the full report in a new tab.",
+        embedUrl:
+          "https://datastudio.google.com/embed/reporting/f5a253f4-8b0d-422e-8917-69659a8c9be4/page/ZN2wF",
+      },
+      {
+        heading: "How to reuse this pattern",
+        body:
+          "Duplicate the section with embedUrl in ProjectDetail.tsx, paste another embed URL, and adjust headings. For PDFs or external tools, use a normal link (you can extend this file with externalLinks later).",
+      },
+    ],
+  },
+
   "sustainability-reports": {
     icon: FileText,
     title: "Sustainability Reports",
@@ -54,6 +88,35 @@ const projects: Record<
       { heading: "Findings", body: "Coming soon — non-conformities, risks, and improvement opportunities." },
       { heading: "Corrective Actions", body: "Coming soon — implementation plan and verification." },
       { heading: "Outcomes", body: "Coming soon — successful certifications, permits, or ETS submissions." },
+    ],
+  },
+
+  /* #STUB_TILES — slugs aligned with ProjectOutcomes.tsx (replace copy when ready) */
+  "environmental-compliance": {
+    icon: Wind,
+    title: "Environmental Compliance",
+    tagline: "Air quality, emissions, and regulatory alignment — details coming soon.",
+    sections: [
+      { heading: "Project Overview", body: "Replace this placeholder with your scope, sites, and regulations." },
+      { heading: "Deliverables", body: "Add methodology, findings, and links to reports or dashboards." },
+    ],
+  },
+  "process-product-upgrade": {
+    icon: Settings,
+    title: "Process / Product Upgrade",
+    tagline: "Quality assurance and process improvements — details coming soon.",
+    sections: [
+      { heading: "Project Overview", body: "Describe the baseline process and upgrade goals here." },
+      { heading: "Results", body: "Summarize KPIs, trials, and outcomes." },
+    ],
+  },
+  "research-projects": {
+    icon: FlaskConical,
+    title: "Research Projects",
+    tagline: "Environmental impact and applied research — details coming soon.",
+    sections: [
+      { heading: "Project Overview", body: "Outline research questions, partners, and funding." },
+      { heading: "Publications & outputs", body: "Link papers, posters, or datasets." },
     ],
   },
 };
@@ -109,13 +172,25 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Content sections */}
+      {/* #PROJECT_BODY — sections loop; optional embedUrl renders iframe (see #EMBED in type) */}
       <main className="flex-1 bg-background py-12 sm:py-20">
         <div className="max-w-[900px] mx-auto px-4 sm:px-6 space-y-8 sm:space-y-10">
           {project.sections.map((s) => (
             <article key={s.heading} className="bg-card border border-border rounded-xl p-5 sm:p-8 shadow-sm">
               <h2 className="text-2xl font-bold text-foreground mb-3">{s.heading}</h2>
               <p className="text-muted-foreground leading-relaxed">{s.body}</p>
+              {s.embedUrl ? (
+                <div className="mt-6 w-full overflow-hidden rounded-lg border border-border bg-muted/30">
+                  {/* #IFRAME_EMBED — same pattern for another dashboard or YouTube embed URL */}
+                  <iframe
+                    title={s.heading}
+                    src={s.embedUrl}
+                    className="aspect-[4/3] min-h-[320px] w-full sm:min-h-[480px]"
+                    loading="lazy"
+                    allowFullScreen
+                  />
+                </div>
+              ) : null}
             </article>
           ))}
 

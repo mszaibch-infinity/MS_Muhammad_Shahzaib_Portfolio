@@ -7,8 +7,8 @@ const Hero = () => {
   const [cvOpen, setCvOpen] = useState(false);
 
   return (
-    <section className="relative min-h-[100svh] min-h-screen flex items-center overflow-hidden">
-      <div className="absolute inset-0">
+    <section className="relative isolate min-h-[100svh] min-h-screen flex items-start md:items-center overflow-hidden">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <img
           src={heroBg}
           alt="Muhammad Shahzaib"
@@ -20,7 +20,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/80 via-foreground/70 to-foreground/75 md:bg-gradient-to-r md:from-foreground/85 md:via-foreground/55 md:to-transparent" />
       </div>
 
-      <div className="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-6 w-full pt-24 pb-28 sm:pb-20 md:py-0 md:min-h-screen md:flex md:items-center">
+      <div className="relative z-20 max-w-[1100px] mx-auto px-4 sm:px-6 w-full pt-24 pb-28 sm:pb-20 md:py-0 md:min-h-screen md:flex md:items-center">
         <div className="max-w-xl w-full min-w-0">
           <p className="text-primary-foreground/80 text-sm sm:text-base md:text-lg font-medium mb-3 tracking-wide">
             Hi, I Am

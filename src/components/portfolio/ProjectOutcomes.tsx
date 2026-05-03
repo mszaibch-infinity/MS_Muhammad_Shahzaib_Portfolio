@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 
+/* #PROJECT_TILES — slug strings must match keys in pages/ProjectDetail.tsx (`projects` registry) */
 const projects = [
   {
-    slug: "esg-sustainability-reporting",
+    slug: "esg-sustainability-reporting", // #ESG → detail page includes Looker Studio embed demo
     title: "ESG / Sustainability",
     subtitle: "Data Reporting",
     blurb: "Real-time Dashboard",
