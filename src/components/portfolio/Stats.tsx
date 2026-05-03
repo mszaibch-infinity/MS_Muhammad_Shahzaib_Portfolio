@@ -9,22 +9,22 @@ const stats = [
 ];
 
 const Stats = () => (
-  <section className="relative bg-background pt-16 pb-24">
-    <div className="max-w-[1100px] mx-auto px-6">
-      {/* Education hanging card overlaps the Hero above */}
-      <div className="grid md:grid-cols-12 gap-8 items-start">
+  <section className="relative bg-background pt-10 sm:pt-16 pb-16 sm:pb-24">
+    <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
+      {/* Education card sits below headline on mobile; overlaps hero on md+ */}
+      <div className="grid md:grid-cols-12 gap-6 md:gap-8 items-start">
         <div className="md:col-span-7 md:order-1 order-2">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4 mt-6 md:mt-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary mb-3 sm:mb-4 mt-4 sm:mt-6 md:mt-12">
             Interesting facts about me:
           </h2>
-          <p className="text-foreground/80 text-lg mb-12 max-w-2xl">
+          <p className="text-foreground/80 text-base sm:text-lg mb-8 sm:mb-12 max-w-2xl">
             Finland-based with a global outlook — currently focused on{" "}
             <strong className="text-primary font-bold">EU and US markets.</strong>
           </p>
         </div>
 
-        <div className="md:col-span-5 md:order-2 order-1 md:-mt-40 -mt-32 relative z-20">
-          <div className="bg-card rounded-xl shadow-2xl border border-border p-8 md:p-10">
+        <div className="md:col-span-5 md:order-2 order-1 md:-mt-40 -mt-12 sm:-mt-20 relative z-20">
+          <div className="bg-card rounded-xl shadow-2xl border border-border p-6 sm:p-8 md:p-10">
             <h3 className="font-['Playfair_Display',serif] italic text-3xl md:text-4xl text-foreground mb-1">
               Education
             </h3>
@@ -52,13 +52,13 @@ const Stats = () => (
       </div>
 
       {/* Stats grid – red text on white */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mt-8">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-8 sm:gap-8 mt-6 sm:mt-8">
         {stats.map((s) => (
-          <div key={s.label} className="text-center">
-            <p className="text-5xl md:text-6xl font-black text-primary mb-2 leading-none">
+          <div key={s.label} className="text-center min-w-0 px-1">
+            <p className="text-4xl sm:text-5xl md:text-6xl font-black text-primary mb-2 leading-none tabular-nums">
               {s.value}
             </p>
-            <p className="text-muted-foreground text-xs md:text-sm uppercase tracking-wider font-medium">
+            <p className="text-muted-foreground text-[10px] sm:text-xs md:text-sm uppercase tracking-wider font-medium leading-snug">
               {s.label}
             </p>
           </div>

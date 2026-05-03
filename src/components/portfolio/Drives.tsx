@@ -38,8 +38,8 @@ const Drives = () => {
   const [active, setActive] = useState<number | null>(0);
 
   return (
-    <section id="drives" className="bg-background py-24">
-      <div className="max-w-[1100px] mx-auto px-6">
+    <section id="drives" className="bg-background py-16 sm:py-24">
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
         <div className="mb-12">
           <p className="text-primary font-bold text-xs uppercase tracking-[0.2em] mb-3">
             What I Do
@@ -71,7 +71,7 @@ const Drives = () => {
                   >
                     <Icon size={20} />
                   </div>
-                  <span className="flex-1 text-base md:text-lg font-bold text-foreground">
+                  <span className="flex-1 min-w-0 text-left text-sm sm:text-base md:text-lg font-bold text-foreground leading-snug">
                     {d.title}
                   </span>
                   <span
@@ -84,7 +84,7 @@ const Drives = () => {
                 </button>
                 {isOpen && (
                   <div className="px-5 md:px-7 pb-6 -mt-1 animate-in fade-in slide-in-from-top-2 duration-300">
-                    <div className="pl-16 text-muted-foreground leading-relaxed">
+                    <div className="text-muted-foreground leading-relaxed text-sm sm:text-base md:pl-16">
                       {d.desc}
                     </div>
                   </div>

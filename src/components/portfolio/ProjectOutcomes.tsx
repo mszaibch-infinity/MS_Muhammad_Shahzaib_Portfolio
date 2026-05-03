@@ -28,8 +28,8 @@ const projects = [
 ];
 
 const ProjectOutcomes = () => (
-  <section id="projects" className="bg-background py-24">
-    <div className="max-w-[1200px] mx-auto px-6">
+  <section id="projects" className="bg-background py-16 sm:py-24">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
       <div className="mb-14">
         <p className="text-primary font-bold text-xs uppercase tracking-[0.2em] mb-3">
           Some Project Highlights
@@ -42,23 +42,23 @@ const ProjectOutcomes = () => (
         </p>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
         {projects.map((p) => (
           <Link
             key={p.slug}
             to={`/projects/${p.slug}`}
-            className="group relative aspect-square rounded-2xl bg-foreground text-primary-foreground p-6 md:p-7 flex flex-col justify-between shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all overflow-hidden"
+            className="group relative min-h-[200px] sm:aspect-square sm:min-h-0 rounded-2xl bg-foreground text-primary-foreground p-5 sm:p-6 md:p-7 flex flex-col justify-between shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/20 group-hover:to-primary/0 transition-colors" />
-            <div className="relative">
-              <h3 className="text-lg md:text-xl font-extrabold leading-tight">
+            <div className="relative min-w-0">
+              <h3 className="text-base sm:text-lg md:text-xl font-extrabold leading-tight">
                 {p.title}
               </h3>
-              <h3 className="text-lg md:text-xl font-extrabold leading-tight mb-3">
+              <h3 className="text-base sm:text-lg md:text-xl font-extrabold leading-tight mb-2 sm:mb-3">
                 {p.subtitle}
               </h3>
-              <div className="w-10 h-[3px] bg-primary mb-3" />
-              <p className="text-primary-foreground/70 text-xs md:text-sm leading-relaxed">
+              <div className="w-10 h-[3px] bg-primary mb-2 sm:mb-3" />
+              <p className="text-primary-foreground/70 text-xs sm:text-sm leading-relaxed">
                 {p.blurb}
               </p>
             </div>

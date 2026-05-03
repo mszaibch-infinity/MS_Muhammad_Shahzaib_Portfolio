@@ -11,9 +11,9 @@ const certifications = [
 ];
 
 const Certifications = () => (
-  <section id="certifications" className="bg-secondary py-24">
-    <div className="max-w-[1100px] mx-auto px-6">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-12">
+  <section id="certifications" className="bg-secondary py-16 sm:py-24">
+    <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground mb-8 sm:mb-12">
         Certifications & Training
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">

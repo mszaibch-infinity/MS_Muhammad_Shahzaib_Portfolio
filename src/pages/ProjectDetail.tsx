@@ -86,8 +86,8 @@ const ProjectDetail = () => {
       <Navbar />
 
       {/* Header */}
-      <section className="bg-foreground pt-32 pb-16">
-        <div className="max-w-[900px] mx-auto px-6">
+      <section className="bg-foreground pt-28 sm:pt-32 pb-12 sm:pb-16">
+        <div className="max-w-[900px] mx-auto px-4 sm:px-6">
           <Link
             to="/#projects"
             className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-primary text-sm font-medium mb-8 transition-colors"
@@ -95,25 +95,25 @@ const ProjectDetail = () => {
             <ArrowLeft size={16} />
             Back to projects
           </Link>
-          <div className="flex items-start gap-5">
-            <div className="w-16 h-16 rounded-xl bg-primary flex items-center justify-center text-primary-foreground shrink-0">
+          <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-primary flex items-center justify-center text-primary-foreground shrink-0">
               <Icon size={28} />
             </div>
-            <div>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-primary-foreground mb-4 leading-tight">
+            <div className="min-w-0">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary-foreground mb-3 sm:mb-4 leading-tight">
                 {project.title}
               </h1>
-              <p className="text-primary-foreground/70 text-lg max-w-2xl">{project.tagline}</p>
+              <p className="text-primary-foreground/70 text-base sm:text-lg max-w-2xl">{project.tagline}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Content sections */}
-      <main className="flex-1 bg-background py-20">
-        <div className="max-w-[900px] mx-auto px-6 space-y-10">
+      <main className="flex-1 bg-background py-12 sm:py-20">
+        <div className="max-w-[900px] mx-auto px-4 sm:px-6 space-y-8 sm:space-y-10">
           {project.sections.map((s) => (
-            <article key={s.heading} className="bg-card border border-border rounded-xl p-8 shadow-sm">
+            <article key={s.heading} className="bg-card border border-border rounded-xl p-5 sm:p-8 shadow-sm">
               <h2 className="text-2xl font-bold text-foreground mb-3">{s.heading}</h2>
               <p className="text-muted-foreground leading-relaxed">{s.body}</p>
             </article>

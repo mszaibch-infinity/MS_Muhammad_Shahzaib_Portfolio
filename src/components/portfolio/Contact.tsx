@@ -10,8 +10,8 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-background">
-      <div className="max-w-[760px] mx-auto px-6">
+    <section id="contact" className="py-16 sm:py-24 bg-background">
+      <div className="max-w-[760px] mx-auto px-4 sm:px-6">
         <div>
             <p className="font-['Playfair_Display',serif] italic text-2xl md:text-3xl text-muted-foreground mb-2">
               Let's talk!
@@ -63,7 +63,7 @@ const Contact = () => {
               </button>
             </form>
 
-            <div className="flex items-center gap-4 mt-10">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-10">
               <a
                 href="mailto:mszaibch@gmail.com"
                 className="w-12 h-12 rounded-full bg-[#EA4335] flex items-center justify-center text-white hover:opacity-80 transition-opacity"
