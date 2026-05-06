@@ -5,9 +5,16 @@ import Footer from "@/components/portfolio/Footer";
 
 type ProjectSection = {
   heading: string;
-  body: string;
-  /** #EMBED optional: Looker Studio / YouTube embed URL — renders iframe below body */
+  /** Single block of text — use when there is only one paragraph */
+  body?: string;
+  /** Multiple paragraphs — spaced; takes precedence over `body` when non-empty */
+  paragraphs?: string[];
+  /** Bullet list rendered after paragraphs / body */
+  bullets?: string[];
+  /** #EMBED optional: dashboard / Streamlit / YouTube URL — renders iframe below text */
   embedUrl?: string;
+  /** Shown under the iframe — opens live app when embedding is blocked */
+  dashboardOpenUrl?: string;
 };
 
 type ProjectEntry = {
@@ -31,28 +38,48 @@ const projects: Record<string, ProjectEntry> = {
     ],
   },
 
-  /* #ESG_PROJECT — demo with embedded Looker Studio (Google) dashboard */
+  /* #ESG_PROJECT — GHG supplier pipeline + embedded Streamlit dashboard */
   "esg-sustainability-reporting": {
     icon: FileText,
     title: "ESG / Sustainability Data Reporting",
-    tagline: "Demo: interactive reporting view — embed your own Looker Studio or similar link the same way.",
+    tagline:
+      "Production-style supplier GHG inventory pipeline — DuckDB star schema, versioned emission factors, and a live Streamlit reporting layer aligned with GHG Protocol and CSRD scrutiny.",
     sections: [
       {
-        heading: "Overview",
-        body:
-          "This page shows how you can combine narrative copy with a live embedded dashboard. Replace this text with your project summary, scope, and stakeholders. Below is a sample Looker Studio embed for demonstration only.",
+        heading: "The problem",
+        paragraphs: [
+          "Sustainability teams at global brands face a structural data challenge that grows more acute every year. Supplier energy data arrives in inconsistent formats, reported in different units, across multiple countries and time zones, with missing submissions and no standardised collection process. Without a robust data infrastructure to ingest, validate, and transform this raw information, GHG inventories remain manually assembled in spreadsheets; unreliable, unauditable, and increasingly non-compliant as the regulatory environment tightens.",
+          "The EU Corporate Sustainability Reporting Directive is accelerating this pressure. CSRD enforcement requires companies to disclose granular, verified emissions data across their full value chain, with sector-specific requirements that evolve with each reporting cycle. Traditional spreadsheet-based reporting cannot meet this standard. What is required is an engineered data pipeline, one that treats sustainability data with the same rigour applied to financial data.",
+        ],
       },
       {
-        heading: "Live dashboard (demo embed)",
-        body:
-          "If the frame is blank, the host may block embedding from localhost — try again on your deployed site. You can also add a link that opens the full report in a new tab.",
-        embedUrl:
-          "https://datastudio.google.com/embed/reporting/f5a253f4-8b0d-422e-8917-69659a8c9be4/page/ZN2wF",
+        heading: "The project",
+        paragraphs: [
+          "This project replicates the core data infrastructure of a production-grade supplier emissions monitoring system. It models the end-to-end workflow that sustainability and data engineering teams at large brands operate: structured data ingestion from supplier sources, automated transformation and enrichment, warehouse-layer storage, analytical querying, and interactive reporting for business decision-making.",
+          "The pipeline processes raw supplier energy submissions across 8 manufacturing facilities in 5 countries. It handles the real-world data quality conditions that characterise supply chain reporting; unit inconsistencies, missing submissions, and format errors — and produces a clean, versioned GHG inventory aligned with the GHG Protocol Corporate Standard.",
+          "A local SQL-based analytical database (DuckDB) serves as the warehouse layer, structured with a star schema identical to the architecture used in cloud platforms such as BigQuery. Emission factors are stored as versioned reference data rather than hardcoded values, so annual updates to IEA and DEFRA figures require a single row change rather than code modification, a production engineering pattern that ensures long-term auditability.",
+          "The interactive dashboard below is the reporting layer. It connects directly to the pipeline output and updates in real time as underlying data changes. Filters operate across all charts simultaneously, enabling the kind of drill-down analysis that sustainability leads, procurement teams, and regulatory compliance officers require in their day-to-day work.",
+        ],
+        embedUrl: "https://ms-ghg-profile-decarb-project.streamlit.app/?embedded=true",
+        dashboardOpenUrl: "https://ms-ghg-profile-decarb-project.streamlit.app/",
       },
       {
-        heading: "How to reuse this pattern",
-        body:
-          "Duplicate the section with embedUrl in ProjectDetail.tsx, paste another embed URL, and adjust headings. For PDFs or external tools, use a normal link (you can extend this file with externalLinks later).",
+        heading: "Skills and methods applied",
+        bullets: [
+          "Python data engineering — pandas ETL pipeline with unit normalisation, period standardisation, emission factor application, and data quality classification",
+          "SQL data modelling — star schema design (fact and dimension tables), analytical query development, DuckDB as a BigQuery-compatible local warehouse",
+          "GHG accounting — GHG Protocol Corporate Standard, Scope 1 and Scope 2 methodology, IEA location-based and DEFRA emission factors, data quality hierarchy (measured, estimated, missing)",
+          "Regulatory mapping — CSRD ESRS E1 disclosure requirements, compliance gap analysis, SBTi target tracking framework",
+          "Data visualisation — Streamlit application development, Plotly interactive charts, deployed via Streamlit Community Cloud",
+        ],
+      },
+      {
+        heading: "A note on scope",
+        paragraphs: [
+          "This project is designed as a reusable foundation. The pipeline architecture, data quality framework, and reporting layer apply equally to other sustainability domains — product carbon footprinting, Scope 3 Category 4 freight emissions, water and waste reporting — and to industries beyond apparel. The underlying patterns transfer to any organisation that needs to collect structured data from distributed sources, validate it against a standard, and surface it for regulatory or strategic use.",
+          "The analytical layer is also intentionally extensible. The structured warehouse output is the right input for more advanced workstreams: predictive modelling of future emissions trajectories, anomaly detection on supplier energy patterns, and regression-based analysis of the relationship between production volume and carbon intensity. These represent the natural next layer of capability for organisations that have solved the foundational data collection problem this project addresses.",
+          "On the gap analysis: I strongly recommend keeping it in the dashboard, collapsed as it is now. A recruiter who does not know CSRD will skip it. A recruiter or hiring manager who does know CSRD will open it immediately — and finding a properly structured E1 gap analysis with correct DR codes inside a portfolio project will be genuinely surprising to them. It signals that you understand the regulatory context, not just the technical tools.",
+        ],
       },
     ],
   },
@@ -178,18 +205,47 @@ const ProjectDetail = () => {
           {project.sections.map((s) => (
             <article key={s.heading} className="bg-card border border-border rounded-xl p-5 sm:p-8 shadow-sm">
               <h2 className="text-2xl font-bold text-foreground mb-3">{s.heading}</h2>
-              <p className="text-muted-foreground leading-relaxed">{s.body}</p>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                {s.paragraphs && s.paragraphs.length > 0
+                  ? s.paragraphs.map((para, idx) => (
+                      <p key={idx}>{para}</p>
+                    ))
+                  : s.body != null && s.body !== ""
+                    ? <p>{s.body}</p>
+                    : null}
+                {s.bullets && s.bullets.length > 0 ? (
+                  <ul className="list-disc space-y-2 pl-5 pt-1">
+                    {s.bullets.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
               {s.embedUrl ? (
-                <div className="mt-6 w-full overflow-hidden rounded-lg border border-border bg-muted/30">
-                  {/* #IFRAME_EMBED — same pattern for another dashboard or YouTube embed URL */}
-                  <iframe
-                    title={s.heading}
-                    src={s.embedUrl}
-                    className="aspect-[4/3] min-h-[320px] w-full sm:min-h-[480px]"
-                    loading="lazy"
-                    allowFullScreen
-                  />
-                </div>
+                <>
+                  <div className="mt-6 w-full overflow-hidden rounded-lg border border-border bg-muted/30">
+                    {/* #IFRAME_EMBED — same pattern for another dashboard or YouTube embed URL */}
+                    <iframe
+                      title={s.heading}
+                      src={s.embedUrl}
+                      className="aspect-[4/3] min-h-[320px] w-full sm:min-h-[480px]"
+                      loading="lazy"
+                      allowFullScreen
+                    />
+                  </div>
+                  {s.dashboardOpenUrl ? (
+                    <p className="mt-4 text-sm">
+                      <a
+                        href={s.dashboardOpenUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium text-primary underline-offset-4 hover:underline"
+                      >
+                        Open dashboard in new tab
+                      </a>
+                    </p>
+                  ) : null}
+                </>
               ) : null}
             </article>
           ))}
