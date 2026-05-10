@@ -2,9 +2,8 @@ import Navbar from "@/components/portfolio/Navbar";
 import Hero from "@/components/portfolio/Hero";
 import Stats from "@/components/portfolio/Stats";
 import Drives from "@/components/portfolio/Drives";
-import BuildingGreener from "@/components/portfolio/BuildingGreener";
 import ProjectOutcomes from "@/components/portfolio/ProjectOutcomes";
-import Certifications from "@/components/portfolio/Certifications";
+import OutsideWork from "@/components/portfolio/OutsideWork";
 import Contact from "@/components/portfolio/Contact";
 import Footer from "@/components/portfolio/Footer";
 
@@ -17,9 +16,8 @@ const Index = () => (
       <Stats />
     </section>
     <Drives />
-    <BuildingGreener />
     <ProjectOutcomes />
-    <Certifications />
+    <OutsideWork />
     <Contact />
     <Footer />
   </div>

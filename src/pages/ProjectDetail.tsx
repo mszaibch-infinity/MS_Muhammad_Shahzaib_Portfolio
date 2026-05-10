@@ -46,39 +46,37 @@ const projects: Record<string, ProjectEntry> = {
       "Production-style supplier GHG inventory pipeline — DuckDB star schema, versioned emission factors, and a live Streamlit reporting layer aligned with GHG Protocol and CSRD scrutiny.",
     sections: [
       {
-        heading: "The problem",
+        heading: "Background",
         paragraphs: [
           "Sustainability teams at global brands face a structural data challenge that grows more acute every year. Supplier energy data arrives in inconsistent formats, reported in different units, across multiple countries and time zones, with missing submissions and no standardised collection process. Without a robust data infrastructure to ingest, validate, and transform this raw information, GHG inventories remain manually assembled in spreadsheets; unreliable, unauditable, and increasingly non-compliant as the regulatory environment tightens.",
-          "The EU Corporate Sustainability Reporting Directive is accelerating this pressure. CSRD enforcement requires companies to disclose granular, verified emissions data across their full value chain, with sector-specific requirements that evolve with each reporting cycle. Traditional spreadsheet-based reporting cannot meet this standard. What is required is an engineered data pipeline, one that treats sustainability data with the same rigour applied to financial data.",
+          "The EU Corporate Sustainability Reporting Directive is accelerating this pressure. CSRD enforcement requires companies to disclose granular, verified emissions data across their full value chain, with sector-specific requirements that evolve with each reporting cycle. Traditional spreadsheet-based reporting cannot meet this standard. What is required is consistent engineered worflows, one that treats sustainability data with the same rigour applied to financial data, providing rapid and reliable reporting outputs.",
         ],
       },
       {
         heading: "The project",
         paragraphs: [
           "This project replicates the core data infrastructure of a production-grade supplier emissions monitoring system. It models the end-to-end workflow that sustainability and data engineering teams at large brands operate: structured data ingestion from supplier sources, automated transformation and enrichment, warehouse-layer storage, analytical querying, and interactive reporting for business decision-making.",
-          "The pipeline processes raw supplier energy submissions across 8 manufacturing facilities in 5 countries. It handles the real-world data quality conditions that characterise supply chain reporting; unit inconsistencies, missing submissions, and format errors — and produces a clean, versioned GHG inventory aligned with the GHG Protocol Corporate Standard.",
-          "A local SQL-based analytical database (DuckDB) serves as the warehouse layer, structured with a star schema identical to the architecture used in cloud platforms such as BigQuery. Emission factors are stored as versioned reference data rather than hardcoded values, so annual updates to IEA and DEFRA figures require a single row change rather than code modification, a production engineering pattern that ensures long-term auditability.",
-          "The interactive dashboard below is the reporting layer. It connects directly to the pipeline output and updates in real time as underlying data changes. Filters operate across all charts simultaneously, enabling the kind of drill-down analysis that sustainability leads, procurement teams, and regulatory compliance officers require in their day-to-day work.",
+          "This includes raw supplier energy submissions across 8 manufacturing facilities in 5 differentcountries. It handles the real-world data quality conditions that characterise supply chain reporting; unit inconsistencies, missing submissions, and format errors, and produces a clean, versioned GHG inventory aligned with the GHG Protocol Corporate Standard.",
+          "A local SQL-based analytical database (DuckDB) serves as the warehouse layer which structured with a star schema identical, simulates the architecture used in cloud platforms such as BigQuery. Emission factors are stored as versioned reference data rather than hardcoded values, so annual updates to IEA and DEFRA figures require a single row change rather than code modification, a production engineering pattern that ensures long-term auditability.",
+          "The interactive dashboard below is the reporting layer currenlty displaying in automated real-time application which can also be turned into other analytical tools like Power BI, Tableau, or Looker studio depending on the needs of the business. It connects directly to the pipeline output and updates in real time as underlying data changes. Filters operate across all charts simultaneously, enabling the kind of drill-down analysis that sustainability leads, procurement teams, and regulatory compliance officers require in their day-to-day work.",
+          "The project structure and outcomes supports data traceability and auditability, providing a clear and transparent audit trail for the sustainability data being reported, which is indeed a challenge for many organisations to achieve, and requires a significant amount of effort and resources to implement."
         ],
-        embedUrl: "https://ms-ghg-profile-decarb-project.streamlit.app/?embedded=true",
-        dashboardOpenUrl: "https://ms-ghg-profile-decarb-project.streamlit.app/",
+        embedUrl: "https://ms-digital-mrv-projects.streamlit.app/?embedded=true",
+        dashboardOpenUrl: "https://ms-digital-mrv-projects.streamlit.app/",
       },
       {
         heading: "Skills and methods applied",
         bullets: [
-          "Python data engineering — pandas ETL pipeline with unit normalisation, period standardisation, emission factor application, and data quality classification",
-          "SQL data modelling — star schema design (fact and dimension tables), analytical query development, DuckDB as a BigQuery-compatible local warehouse",
-          "GHG accounting — GHG Protocol Corporate Standard, Scope 1 and Scope 2 methodology, IEA location-based and DEFRA emission factors, data quality hierarchy (measured, estimated, missing)",
-          "Regulatory mapping — CSRD ESRS E1 disclosure requirements, compliance gap analysis, SBTi target tracking framework",
-          "Data visualisation — Streamlit application development, Plotly interactive charts, deployed via Streamlit Community Cloud",
+          "Python data engineering, SQL data modelling, Data visualisation, Data analytics",
+          "GHG accounting: GHG Protocol Corporate Standard, Scope 1 and Scope 2 methodology, IEA location-based and DEFRA emission factors, data quality hierarchy (measured, estimated, missing)",
+          "Regulatory mapping: CSRD ESRS E1 disclosure requirements, compliance gap analysis, SBTi target tracking framework",
         ],
       },
       {
-        heading: "A note on scope",
+        heading: "Scope",
         paragraphs: [
-          "This project is designed as a reusable foundation. The pipeline architecture, data quality framework, and reporting layer apply equally to other sustainability domains — product carbon footprinting, Scope 3 Category 4 freight emissions, water and waste reporting — and to industries beyond apparel. The underlying patterns transfer to any organisation that needs to collect structured data from distributed sources, validate it against a standard, and surface it for regulatory or strategic use.",
+          "This project is designed as a reusable foundation. The pipeline architecture, data quality framework, and reporting layer apply equally to other sustainability domains; product carbon footprinting, Scope 3 Category 4 freight emissions, water and waste reporting, and to industries beyond apparel. The underlying patterns transfer to any organisation that needs to collect structured data from distributed sources, validate it against a standard, and surface it for regulatory or strategic use.",
           "The analytical layer is also intentionally extensible. The structured warehouse output is the right input for more advanced workstreams: predictive modelling of future emissions trajectories, anomaly detection on supplier energy patterns, and regression-based analysis of the relationship between production volume and carbon intensity. These represent the natural next layer of capability for organisations that have solved the foundational data collection problem this project addresses.",
-          "On the gap analysis: I strongly recommend keeping it in the dashboard, collapsed as it is now. A recruiter who does not know CSRD will skip it. A recruiter or hiring manager who does know CSRD will open it immediately — and finding a properly structured E1 gap analysis with correct DR codes inside a portfolio project will be genuinely surprising to them. It signals that you understand the regulatory context, not just the technical tools.",
         ],
       },
     ],
