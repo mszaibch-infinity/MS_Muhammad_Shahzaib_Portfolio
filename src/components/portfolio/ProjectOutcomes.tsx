@@ -3,28 +3,28 @@ import { Link } from "react-router-dom";
 /* #PROJECT_TILES — slug strings must match keys in pages/ProjectDetail.tsx (`projects` registry) */
 const projects = [
   {
-    slug: "esg-sustainability-reporting", // #ESG → Streamlit GHG dashboard embed on detail page
-    title: "ESG / Sustainability",
-    subtitle: "Data Reporting",
-    blurb: "Real-time Dashboard",
+    slug: "supplier-emissions-csrd",
+    title: "Supplier Emissions",
+    subtitle: "Data & CSRD",
+    blurb: "Pipeline, warehouse, live reporting",
   },
   {
-    slug: "environmental-compliance",
-    title: "Environmental",
-    subtitle: "Compliance",
-    blurb: "Air Quality / Emissions",
+    slug: "industrial-emissions-compliance",
+    title: "Industrial Emissions",
+    subtitle: "Compliance dashboard",
+    blurb: "CEM-style monitoring & KPIs",
   },
   {
-    slug: "process-product-upgrade",
-    title: "Process / Product",
-    subtitle: "Upgrade",
-    blurb: "Quality Assurance and Control",
+    slug: "process-emissions-diagnostic",
+    title: "Process Emissions",
+    subtitle: "Diagnostic analysis",
+    blurb: "Instrumentation & audit evidence",
   },
   {
-    slug: "research-projects",
-    title: "Research",
-    subtitle: "Projects",
-    blurb: "Environmental Impact",
+    slug: "air-quality-research",
+    title: "Air Quality",
+    subtitle: "Research",
+    blurb: "Case study in preparation",
   },
 ];
 

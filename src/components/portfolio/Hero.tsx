@@ -29,7 +29,7 @@ const Hero = () => {
             Muhammad <span className="text-primary">Shahzaib</span>
           </h1>
           <p className="text-primary-foreground/90 text-base sm:text-lg md:text-xl italic max-w-xl mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light">
-            Environmental Specialist and Data Analyst turning complex data challenges into actionable outcomes, delivering technical solutions that enhance processes, ensure compliance, and drive sustainable growth.
+          "Environmental Scientist and Technical Analyst specializing in emissions monitoring, industrial systems, and environmental data, helping companies advance their data processing for actionable outcomes across compliance, process improvement, and business decision-making"
           </p>
           <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 mt-2 sm:mt-4 sm:[&>a]:w-auto sm:[&>button]:w-auto">
             <a
