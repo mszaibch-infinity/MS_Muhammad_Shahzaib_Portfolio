@@ -55,15 +55,15 @@ const drives = [
 
 const visualTemplates = [
   {
-    title: "Measurement setup",
+    title: "Measurements",
     image: measurementImg,
   },
   {
-    title: "Dashboard snapshot",
+    title: "Digital Reporting",
     image: dashboardImg,
   },
   {
-    title: "Impact highlight",
+    title: "Data analysis",
     image: impactImg,
   },
 ];
