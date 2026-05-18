@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { Plus, Minus, Leaf, Wind, ShieldCheck, BarChart3, FlaskConical, FileBarChart } from "lucide-react";
 
+import measurementImg from "@/assets/measurement-setup.jpg";
+import dashboardImg from "@/assets/dashboard-snapshot.jpg";
+import impactImg from "@/assets/impact-highlight.jpg";
+
 const drives = [
   {
     icon: Leaf,
