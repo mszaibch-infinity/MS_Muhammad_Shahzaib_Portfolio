@@ -67,7 +67,7 @@ const projects: Record<string, ProjectEntry> = {
       },
       {
         heading: "Skills and knowledge",
-        body: "Python data engineering · SQL data modelling · DuckDB · Star schema design · GHG Protocol Corporate Standard · Scope 1 and Scope 2 methodology · IEA and DEFRA emission factors · Data quality hierarchy · CSRD ESRS E1 disclosure requirements · Compliance gap analysis · SBTi target tracking · Data visualisation · Dashboard design",
+        body: "Python data analysis · SQL data modelling · DuckDB · GHG Protocol Corporate Standard · IEA and DEFRA emission factors · Data quality hierarchy · CSRD ESRS E1 disclosure requirements · Compliance gap analysis · SBTi target tracking · Data visualisation · Dashboard design",
         skillsChips: true,
       },
       {
@@ -102,7 +102,7 @@ const projects: Record<string, ProjectEntry> = {
       },
       {
         heading: "Skills and knowledge",
-        body: "Emissions compliance analysis · Continuous emissions monitoring (CEM) · Exceedance detection · Regulatory threshold benchmarking · Time series analysis · Correlation analysis · Process anomaly identification · Python · pandas · matplotlib · seaborn · Streamlit · Data pipeline structuring · Dashboard design",
+        body: "Emissions compliance analysis · Continuous emissions monitoring (CEM) · Exceedance detection · Regulatory threshold benchmarking · Time series analysis · Correlation analysis · Process anomaly identification · Python data analysis and visualization · Streamlit hosting · Data pipeline structuring · Dashboard design",
         skillsChips: true,
       },
       {
@@ -137,13 +137,13 @@ const projects: Record<string, ProjectEntry> = {
       },
       {
         heading: "Skills and knowledge",
-        body: "Process data analysis · Emissions instrumentation diagnostics · Sensor discrepancy quantification · Root cause analysis · Anomaly detection · Combustion process monitoring · O₂/CO correlation analysis · Compliance gap identification · Python · pandas · numpy · matplotlib · Streamlit · Synthetic data engineering · Dashboard design",
+        body: "Process data analysis · Emissions instrumentation diagnostics · Sensor discrepancy quantification · Root cause analysis · Anomaly detection · Combustion process monitoring · Compliance gap identification · Python data analysis · Streamlit hosting· Dashboard design",
         skillsChips: true,
       },
       {
         heading: "Scope",
         paragraphs: [
-          "365 days of simulated daily process data across five parameters: production rate, burner load, O₂, temperature, and CO, with parallel online and audit measurement series. Pipeline outputs include a flagged process dataset, monthly aggregations, correlation matrix, KPI summary, and a structured root cause table. The diagnostic framework applies directly to any facility operating continuous emissions monitoring (CEM) and to any domain where the integrity of the measurement system itself is a compliance and audit risk.",
+          "Process data across five parameters: production rate, burner load, O₂, temperature, and CO, with parallel online and audit measurement series. Pipeline outputs include a flagged process dataset, monthly aggregations, correlation matrix, KPI summary, and a structured root cause table. The diagnostic framework applies directly to any facility operating continuous emissions monitoring (CEM) and to any domain where the integrity of the measurement system itself is a compliance and audit risk.",
         ],
       },
     ],
