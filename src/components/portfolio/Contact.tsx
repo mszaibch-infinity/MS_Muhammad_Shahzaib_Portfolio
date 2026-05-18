@@ -14,7 +14,7 @@ const Contact = () => {
       <div className="max-w-[760px] mx-auto px-4 sm:px-6">
         <div>
             <p className="font-['Playfair_Display',serif] italic text-2xl md:text-3xl text-muted-foreground mb-2">
-              Let's talk!
+              Let's discuss!
             </p>
             <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-10">
               Get in touch

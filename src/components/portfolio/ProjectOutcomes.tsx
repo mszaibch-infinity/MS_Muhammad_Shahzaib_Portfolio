@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const projects = [
   {
     slug: "supplier-emissions-csrd",
-    title: "Supplier Emissions",
-    subtitle: "Data & CSRD",
+    title: "Supplier Emissions/",
+    subtitle: "GHG Protocol, EU CSRD",
     blurb: "Pipeline, warehouse, live reporting",
   },
   {

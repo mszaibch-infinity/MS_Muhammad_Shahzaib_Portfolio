@@ -5,7 +5,7 @@ const stats = [
   { value: "+4", label: "Industrial Experience" },
   { value: "+2", label: "Years of Research Experience" },
   { value: "+10", label: "Projects" },
-  { value: "2", label: "Countries Worked" },
+  { value: "3", label: "Countries Worked" },
 ];
 
 const Stats = () => (
@@ -17,8 +17,7 @@ const Stats = () => (
             Interesting facts about me:
           </h2>
           <p className="text-foreground/80 text-base sm:text-lg mb-8 sm:mb-12 max-w-2xl">
-            Finland-based with a global outlook — currently focused on{" "}
-            <strong className="text-primary font-bold">EU and US markets.</strong>
+          Based in <strong className="text-primary font-bold">Finland</strong>, the happiest country in the world, known for its beautiful nature and values of equality, diversity, inclusivity, and sustainability.{" "}
           </p>
         </div>
 
