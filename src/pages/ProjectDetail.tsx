@@ -18,6 +18,7 @@ type ProjectSection = {
   dashboardOpenUrl?: string;
   /** Split `body` on middle dots (·) into compact skill chips */
   skillsChips?: boolean;
+  image?: string;
 };
 
 type ProjectEntry = {
@@ -29,6 +30,49 @@ type ProjectEntry = {
 
 /* #PROJECT_REGISTRY - every slug here must match `slug` in ProjectOutcomes.tsx */
 const projects: Record<string, ProjectEntry> = {
+  "adaptive-signal-filtering": {
+    icon: FlaskConical,
+    title: "Machine Learning-Based Adaptive Signal Filtering",
+    tagline:
+      "An ML-driven approach to local signal analysis and adaptive filter selection.",
+    sections: [
+      {
+        heading: "Project Overview",
+        body:
+          "Developed a machine-learning-based approach to adaptive signal denoising. Rather than applying one fixed filter across an entire signal, the project investigates selecting suitable filtering configurations for different signal regions.",
+      },
+      {
+        heading: "Methodology",
+        bullets: [
+          "Sliding-window signal analysis.",
+          "Statistical feature extraction from local signal regions.",
+          "Random Forest-based filter selection.",
+          "Evaluation of multiple filtering techniques and configurations.",
+          "SNR-based filter performance evaluation.",
+        ],
+      },
+      {
+        heading: "Results & Evaluation",
+        body:
+          "The adaptive filtering approach was evaluated against a conventional Moving Average baseline using Signal-to-Noise Ratio (SNR).",
+        image: "/images/Adaptive_signal_filtering.png",
+      },
+      {
+        heading: "Technologies & Skills",
+        body:
+          "Python · NumPy · Pandas · SciPy · Scikit-learn · Matplotlib · Signal Processing · Feature Engineering · Hyperparameter Tuning· Regression · Classification · Model Evaluation . Model Improvment",
+        skillsChips: true,
+      },
+      {
+        heading: "Scope & Limitations",
+        body:
+          "Developed and evaluated using synthetic signals. Further validation on real-world measured signals is required to assess generalisation across different signal types and noise conditions.",
+      },
+    ],
+  },
+
+
+
   "data-analysis": {
     icon: BarChart3,
     title: "Data Analysis & Visualizations",
@@ -347,6 +391,13 @@ const ProjectDetail = () => {
                         <li key={item}>{item}</li>
                       ))}
                     </ul>
+                  ) : null}
+                  {s.image ? (
+                    <img
+                      src={s.image}
+                      alt={`${s.heading} illustration`}
+                      className="mt-6 w-full rounded-lg border border-border bg-muted/30"
+                    />
                   ) : null}
                 </div>
                 {s.embedUrl ? (
