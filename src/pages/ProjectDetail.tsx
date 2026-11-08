@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, BarChart3, Factory, FileText, FlaskConical, Settings, Wind } from "lucide-react";
@@ -19,6 +20,10 @@ type ProjectSection = {
   /** Split `body` on middle dots (·) into compact skill chips */
   skillsChips?: boolean;
   image?: string;
+  images?: {
+    src: string;
+    alt: string;
+  }[];
 };
 
 type ProjectEntry = {
@@ -60,7 +65,7 @@ const projects: Record<string, ProjectEntry> = {
       {
         heading: "Technologies & Skills",
         body:
-          "Python · NumPy · Pandas · SciPy · Scikit-learn · Matplotlib · Signal Processing · Feature Engineering · Hyperparameter Tuning· Regression · Classification · Model Evaluation . Model Improvment",
+          "Python · NumPy · Pandas · SciPy · Scikit-learn · Matplotlib · Signal Processing · Feature Engineering · Hyperparameter Tuning · Regression · Classification · Model Evaluation · Model Improvement",
         skillsChips: true,
       },
       {
@@ -70,8 +75,6 @@ const projects: Record<string, ProjectEntry> = {
       },
     ],
   },
-
-
 
   "data-analysis": {
     icon: BarChart3,
@@ -87,37 +90,54 @@ const projects: Record<string, ProjectEntry> = {
 
   "supplier-emissions-csrd": {
     icon: FileText,
-    title: "Supplier Emissions Data Infrastructure & CSRD Reporting Pipeline",
+    title: "Supplier Emissions Data Infrastructure & Reporting",
     tagline:
-      "Structured supplier energy ingestion, DuckDB warehouse, versioned factors, and reporting aligned with CSRD scrutiny.",
+      "A supplier emissions data pipeline combining automated validation, a DuckDB warehouse, versioned emission factors, and interactive reporting.",
+
     sections: [
       {
         heading: "Background",
         paragraphs: [
-          "Sustainability teams at global brands face a structural data challenge that grows more acute every year. Supplier energy data arrives in inconsistent formats, reported in different units, across multiple countries, with missing submissions and no standardised collection process. Without robust data infrastructure to ingest, validate, and transform this information, GHG inventories remain manually assembled in spreadsheets, unreliable, unauditable, and increasingly non-compliant as regulatory pressure tightens.",
-          "The EU Corporate Sustainability Reporting Directive is accelerating this. CSRD enforcement requires granular, verified emissions data across the full value chain, with sector-specific disclosure requirements that evolve each reporting cycle. Spreadsheet-based reporting cannot meet this standard. What is required is an engineered workflow that treats sustainability data with the same rigour applied to financial data.",
+          "Sustainability teams at companies with global supply chains face a persistent challenge: collecting reliable emissions data from suppliers. Energy data arrives in different formats and units, across multiple countries, with incomplete submissions and no consistent collection process. When this information is managed through separate spreadsheets, validating figures, tracing their sources, and preparing a consistent greenhouse gas (GHG) inventory becomes time-consuming and difficult to audit.",
+          "This challenge is becoming increasingly important as companies prepare sustainability disclosures under the EU Corporate Sustainability Reporting Directive (CSRD) and the European Sustainability Reporting Standards (ESRS). Reporting on climate-related impacts requires reliable information, including relevant value-chain emissions data. This creates a need for structured processes that can ingest, validate, and transform supplier data into traceable information for analysis and reporting.",
+          "The same approach can be applied to different types of business data, with the data ingestion, cleaning, validation, transformation, and reporting processes adapted to the specific requirements of each use case.",
         ],
       },
       {
         heading: "The project",
         paragraphs: [
-          "This project implements the core data infrastructure of a production-grade supplier emissions monitoring system, replicating the end-to-end workflow that sustainability and data engineering teams at large brands operate: structured ingestion from supplier sources, automated transformation and enrichment, warehouse-layer storage, analytical querying, and interactive reporting.",
-          "The pipeline processes raw energy submissions across 8 manufacturing facilities in 5 countries, handling the data quality conditions that characterise real supply chain reporting: unit inconsistencies, missing submissions, and format errors, and produces a clean, versioned GHG inventory aligned with the GHG Protocol Corporate Standard.",
-          "DuckDB serves as the analytical warehouse layer, structured with a star schema that mirrors the architecture of cloud platforms such as BigQuery. Emission factors are stored as versioned reference data rather than hardcoded values, so annual updates to IEA and DEFRA figures require a single row change, a production engineering pattern that ensures long-term auditability and traceable lineage across reporting cycles.",
-          "The dashboard connects directly to the pipeline output and updates as underlying data changes. Filters operate across all views simultaneously, supporting the drill-down analysis that sustainability leads, procurement teams, and compliance officers require; surfacing coverage rates, compliance gaps, and data quality classifications across the facility network.",
+          "I developed a working prototype of a supplier emissions reporting system, processing energy data from eight manufacturing facilities across five countries. Built with Python and DuckDB, it brings together data processing, validation, emissions calculations, and interactive reporting in one workflow. The application provides an overview of emissions KPIs, facility benchmarking, and compliance indicators, with additional functionality for monitoring data coverage, identifying missing submissions, and checking data quality.",
+          "Designed to be adaptable, the prototype can be customised for different datasets, business requirements, and deployment environments, including local deployment where organisations need greater control over their data. The architecture also provides a foundation for future machine-learning applications, such as emissions forecasting and tracking progress towards reduction targets.",
         ],
-        embedUrl: "https://ms-digital-mrv-projects.streamlit.app/?embedded=true",
-        dashboardOpenUrl: "https://ms-digital-mrv-projects.streamlit.app/",
+        // embedUrl: "https://ms-digital-mrv-projects.streamlit.app/?embedded=true",
+        // dashboardOpenUrl: "https://ms-digital-mrv-projects.streamlit.app/",
+      },
+      {
+        heading: "Dashboard preview",
+        paragraphs: [
+          "The screenshots below show two parts of the reporting interface. The full prototype includes additional views for data coverage, data quality, and missing-submission monitoring, which can be demonstrated separately.",
+        ],
+        images: [
+          {
+            src: "/images/csrd-kpi-summary.png",
+            alt: "Supplier emissions reporting dashboard showing the KPI summary",
+          },
+          {
+            src: "/images/csrd-benchmarking-compliance.png",
+            alt: "Facility benchmarking and compliance checks in the supplier emissions dashboard",
+          },
+        ],
       },
       {
         heading: "Skills and knowledge",
-        body: "Python data analysis · SQL data modelling · DuckDB · GHG Protocol Corporate Standard · IEA and DEFRA emission factors · Data quality hierarchy · CSRD ESRS E1 disclosure requirements · Compliance gap analysis · SBTi target tracking · Data visualisation · Dashboard design",
+        body: "Python · SQL · Automated Data Processing & Reporting · Data ingestion and transformation · Data cleaning and validation · GHG Protocol Corporate Standard · CSRD and ESRS E1 reporting context · Emissions analysis · Dashboard development",
         skillsChips: true,
       },
       {
-        heading: "Scope",
+        heading: "Scope and potential applications",
         paragraphs: [
-          "Eight supplier facilities across five countries, covering structured ingestion, automated validation, warehouse storage, and regulatory-aligned reporting. The pipeline architecture applies equally to other sustainability domains: product carbon footprinting, Scope 3 Category 4 freight, water and waste reporting, and to any organisation that needs to collect structured data from distributed sources, validate it against a standard, and surface it for regulatory or strategic use. The warehouse output is also a direct input for more advanced workstreams: predictive emissions modelling, supplier anomaly detection, and regression analysis of production volume against carbon intensity.",
+          "The prototype covers eight supplier facilities across five countries, from data ingestion and validation to warehouse storage and reporting. The same approach could be adapted to other sustainability data workflows, including product carbon footprints, freight emissions, water consumption, and waste reporting.",
+          "Its modular structure also leaves room for further development. Depending on the organisation's needs, additional validation rules, reporting requirements, forecasting models, and supplier performance analysis could be added without rebuilding the entire system.",
         ],
       },
     ],
@@ -125,34 +145,35 @@ const projects: Record<string, ProjectEntry> = {
 
   "industrial-emissions-compliance": {
     icon: Factory,
-    title: "Industrial Emissions Compliance Monitoring Dashboard",
-    tagline: "Nine-month operating window, exceedance detection, and compliance KPIs in one Streamlit layer.",
+    title: "Industrial Emissions Compliance Monitoring",
+    tagline: "Industrial emissions analysis, compliance assessment, and operational monitoring.",
+
     sections: [
       {
-        heading: "Background",
+        heading: "Overview",
         paragraphs: [
-          "Industrial facilities operating under continuous emissions monitoring obligations generate high-frequency data across multiple process parameters, yet most of it is never properly interrogated. Exceedance events are logged but not investigated. Compliance rates are reported but not understood. The gap between raw monitoring data and actionable operational insight is where regulatory risk accumulates, and where engineering resource gets misallocated when something goes wrong.",
+          "An industrial emissions monitoring project focused on assessing regulatory compliance, identifying emission exceedances, and understanding relationships between production activity and pollutant levels.",
+          "Developed a Python-based analytical workflow to process emissions and operational data, evaluate compliance performance, and identify potential areas requiring further investigation."
+        ],
+        image: "/images/industrial-emissions-compliance-dashboard.png",
+      },
+      {
+        heading: "Analysis and findings",
+        paragraphs: [
+          "Analysed pollutant levels against compliance limits, examined monthly emissions trends, and investigated correlations between production rates and emissions.",
+          "One key finding was that CO exceedances did not strongly correlate with production rate increases, highlighting the importance of looking beyond production volume when investigating emissions issues."
         ],
       },
       {
-        heading: "The project",
-        paragraphs: [
-          "This project builds an end-to-end emissions analysis pipeline across a simulated nine-month operating period, monitoring five process parameters across multiple production lines, detecting exceedance events against regulatory thresholds, and surfacing compliance patterns through an interactive dashboard.",
-          "The analysis produced a finding with direct operational consequence: CO exceedances showed no significant correlation with production rate increases. In an active monitoring context, that result matters: it redirects investigation away from load management and toward combustion efficiency or instrumentation integrity. That distinction determines where engineering resource is allocated and how a regulatory inquiry is answered.",
-          "The dashboard delivers KPI-level compliance metrics, time series monitoring for PM, NOx, and CO against threshold limits, production-emissions scatter analysis, and a full correlation matrix across process parameters.",
-        ],
-        embedUrl: "https://industrialemisison-production.up.railway.app/?embedded=true",
-        dashboardOpenUrl: "https://industrialemisison-production.up.railway.app/",
-      },
-      {
-        heading: "Skills and knowledge",
-        body: "Emissions compliance analysis · Continuous emissions monitoring (CEM) · Exceedance detection · Regulatory threshold benchmarking · Time series analysis · Correlation analysis · Process anomaly identification · Python data analysis and visualization · Streamlit hosting · Data pipeline structuring · Dashboard design",
+        heading: "Skills and tools",
+        body: "Python · Pandas · NumPy · Data Analysis · Emissions Compliance · Exceedance Detection · Regulatory Threshold Analysis · Time Series Analysis · Correlation Analysis · Anomaly Detection · Streamlit · Data Visualisation",
         skillsChips: true,
       },
       {
-        heading: "Scope",
+        heading: "Project scope",
         paragraphs: [
-          "Five process parameters monitored across multiple production lines over nine months. Pipeline outputs include a cleaned emissions dataset, monthly aggregations, compliance summary by parameter, and a correlation matrix. The structured output is a direct input for predictive exceedance modelling, anomaly detection, and regression analysis of production volume against emissions intensity.",
+          "Analysed synthetic nine-month industrial operating data covering PM, NOx, SO2, CO, and production rates. Developed compliance KPIs, exceedance summaries, monthly aggregations, trend analysis, and an interactive monitoring dashboard.",
+          "The project represents a real-world industrial monitoring scenario. Synthetic data was used to simulate realistic operating conditions while protecting confidential industrial information."
         ],
       },
     ],
@@ -160,34 +181,34 @@ const projects: Record<string, ProjectEntry> = {
 
   "process-emissions-diagnostic": {
     icon: Settings,
-    title: "Process Emissions Diagnostic & Instrumentation Integrity Analysis",
-    tagline: "Synthetic year-long CEM-style data, discrepancy detection, and root-cause evidence for audits.",
+    title: "Process Emissions Diagnostic",
+    tagline: "Industrial emissions analysis, monitoring integrity, and root-cause investigation.",
+
     sections: [
       {
-        heading: "Background",
+        heading: "Overview",
         paragraphs: [
-          "One of the most underappreciated risks in industrial emissions management is not that a facility emits above its limit. It is that the monitoring system reports that it does not. Sensor misconfiguration, incorrect correction factors, and measurement drift create a gap between what instruments report and what is actually being emitted. This gap only surfaces during third-party audits, regulatory inspections, or when the discrepancy becomes too large to ignore. By that point, the compliance and reputational consequences are already in motion.",
+          "An industrial emissions diagnostic project exploring how discrepancies between online monitoring systems and independent audit measurements can hide potential compliance issues.",
+          "Developed a Python-based analytical workflow using synthetic process and emissions data to investigate measurement discrepancies, identify abnormal operating periods, and examine possible contributing factors."
+        ],
+        image: "/images/process-emissions-diagnostic-dashboard.png",
+      },
+      {
+        heading: "Analysis and findings",
+        paragraphs: [
+          "Compared online sensor readings with audit measurements, evaluated process-variable relationships, and investigated abnormal CO emission patterns. The data processing includes various process parameters to investigate potential correlations and root causes, which can also be used to optimize process and production performance and evaluating the abatment system's effectiveness.",
+          "The analysis highlighted potential instrumentation issues and combustion-related behaviour, demonstrating how combining emissions data with process parameters can support more informed investigation and compliance monitoring."
         ],
       },
       {
-        heading: "The project",
-        paragraphs: [
-          "This project simulates a full year of process and emissions data across a combustion-based industrial operation, engineers a realistic monitoring failure scenario, and constructs a diagnostic framework to detect, quantify, and explain it.",
-          "The core finding is a sensor discrepancy ratio of 2.0: online monitoring consistently reporting at half the value of independent audit measurements across the same operating period. The root cause analysis identifies three concurrent issues: a pressure leak producing artificially stable O₂ readings despite rising CO, an incorrect correction factor applied to the online system producing systematically underreported values, and incomplete combustion during a defined anomaly window driving real exceedances that the online system failed to flag.",
-          "The correlation between O₂ and CO, the divergence between online and audit measurement series, and the anomaly period isolation are all quantified and visualised, producing the kind of evidence base that supports both internal engineering investigation and regulatory disclosure.",
-        ],
-        embedUrl: "https://processemissiondiagnostic-production.up.railway.app/?embedded=true",
-        dashboardOpenUrl: "https://processemissiondiagnostic-production.up.railway.app/",
-      },
-      {
-        heading: "Skills and knowledge",
-        body: "Process data analysis · Emissions instrumentation diagnostics · Sensor discrepancy quantification · Root cause analysis · Anomaly detection · Combustion process monitoring · Compliance gap identification · Python data analysis · Streamlit hosting· Dashboard design",
+        heading: "Skills and tools",
+        body: "Python · Pandas · NumPy · Data Analysis · Exploratory Data Analysis · Correlation Analysis · Anomaly Detection · Root Cause Analysis · Process Monitoring · Data Visualisation",
         skillsChips: true,
       },
       {
-        heading: "Scope",
+        heading: "Project scope",
         paragraphs: [
-          "Process data across five parameters: production rate, burner load, O₂, temperature, and CO, with parallel online and audit measurement series. Pipeline outputs include a flagged process dataset, monthly aggregations, correlation matrix, KPI summary, and a structured root cause table. The diagnostic framework applies directly to any facility operating continuous emissions monitoring (CEM) and to any domain where the integrity of the measurement system itself is a compliance and audit risk.",
+          "The project is based on a real-world industrial scenario, designed to explore potential compliance issues and process performance improvements. Synthetic data was used to represent realistic operating conditions while protecting confidential industrial data."
         ],
       },
     ],
@@ -216,6 +237,7 @@ const projects: Record<string, ProjectEntry> = {
       { heading: "Lessons Learned", body: "Coming soon: what to scale and what to avoid next." },
     ],
   },
+
   "compliance-auditing": {
     icon: Wind,
     title: "Compliance & Auditing",
@@ -227,6 +249,7 @@ const projects: Record<string, ProjectEntry> = {
       { heading: "Outcomes", body: "Coming soon: successful certifications, permits, or ETS submissions." },
     ],
   },
+
   "sustainability-reports": {
     icon: Settings,
     title: "Sustainability Reports",
@@ -385,6 +408,7 @@ const ProjectDetail = () => {
                 </h2>
                 <div className="pt-4">
                   <SectionBody section={s} sectionIndex={i} />
+
                   {s.bullets && s.bullets.length > 0 ? (
                     <ul className="list-disc space-y-2 pl-5 pt-3 text-muted-foreground marker:text-primary/70">
                       {s.bullets.map((item) => (
@@ -392,6 +416,7 @@ const ProjectDetail = () => {
                       ))}
                     </ul>
                   ) : null}
+
                   {s.image ? (
                     <img
                       src={s.image}
@@ -399,7 +424,21 @@ const ProjectDetail = () => {
                       className="mt-6 w-full rounded-lg border border-border bg-muted/30"
                     />
                   ) : null}
+
+                  {s.images && s.images.length > 0 ? (
+                    <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {s.images.map((image) => (
+                        <img
+                          key={image.src}
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full rounded-lg border border-border bg-muted/30"
+                        />
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
+
                 {s.embedUrl ? (
                   <>
                     <div className="mt-6 w-full overflow-hidden rounded-lg border border-border bg-muted/30 ring-1 ring-border/50">
