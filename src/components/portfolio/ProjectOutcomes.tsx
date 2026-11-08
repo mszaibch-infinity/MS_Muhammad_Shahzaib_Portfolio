@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 /* #PROJECT_TILES — slug strings must match keys in pages/ProjectDetail.tsx (`projects` registry) */
 const projects = [
   {
+    slug: "adaptive-signal-filtering",
+    title: "Adaptive Signal Filtering",
+    subtitle: "Machine Learning & Signal Processing",
+    blurb: "Sliding-window analysis & adaptive filter selection",
+  },
+
+  {
     slug: "supplier-emissions-csrd",
     title: "Supplier Emissions/",
     subtitle: "GHG Protocol, EU CSRD",
